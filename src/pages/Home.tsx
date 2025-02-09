@@ -74,7 +74,7 @@ export const Home = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <img 
-                src="logos/Bg.jpg"
+                src="https://plus.unsplash.com/premium_vector-1728405835283-2abb045e45cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHdlYWx0aHdpc2V8ZW58MHx8MHx8fDA%3D"
                 alt="Financial Dashboard"
                 className="rounded-lg shadow-2xl border-4 border-[#2C5F2D] hover:shadow-green-500 transition-shadow"
               />

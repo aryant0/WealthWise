@@ -14,7 +14,7 @@ export const About = () => {
     {
       name: "Aryan Thakur",
       role: "CEO & Founder",
-      image: "logos/aryan.jpg"
+      image: "https://imgs.search.brave.com/yAfFSfI4s7slaioiUXzUdO4VpgQ2rlle28H95BWcdyU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudGhlZGlyZWN0/LmNvbS9tZWRpYS9h/cnRpY2xlX2Z1bGwv/YmFraXMuanBn"
     },
     {
       name: "Arya Thakur",
@@ -29,7 +29,7 @@ export const About = () => {
     {
       name: "Trilochana Ahuja",
       role: "Head of Design",
-      image: "logos/ishh.jpg"
+      image: "https://imgs.search.brave.com/GG_bfw5dkHLWnO79Dmf6u8ig5vzvhNQk7DDPp70945s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9leHBs/b3JpbmdiaXRzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MS8xMS9hbmltZS1n/aXJsLXBmcC0yLmpw/Zw"
       
     }
   ];

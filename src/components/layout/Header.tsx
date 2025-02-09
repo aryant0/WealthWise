@@ -11,7 +11,7 @@ export const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src="logos/loup_2012.svg" alt="WealthWise Logo" className="h-10 w-10" />
+            <img src="https://freesvg.org/img/loup_2012.png" alt="WealthWise Logo" className="h-10 w-10" />
             <span className="text-xl font-bold text-white">WealthWise</span>
           </Link>
 
