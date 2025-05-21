@@ -87,30 +87,53 @@ const DEMO_GOALS = [
 
 export const useDemo = () => {
   const [isDemo, setIsDemo] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const startDemoSession = async () => {
-    // Store demo data in localStorage
-    localStorage.setItem('demo_mode', 'true');
-    localStorage.setItem('demo_user', JSON.stringify(DEMO_USER));
-    localStorage.setItem('demo_transactions', JSON.stringify(DEMO_TRANSACTIONS));
-    localStorage.setItem('demo_investments', JSON.stringify(DEMO_INVESTMENTS));
-    localStorage.setItem('demo_budgets', JSON.stringify(DEMO_BUDGETS));
-    localStorage.setItem('demo_goals', JSON.stringify(DEMO_GOALS));
-    
-    setIsDemo(true);
-    return true;
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Store demo data in localStorage
+      localStorage.setItem('demo_mode', 'true');
+      localStorage.setItem('demo_user', JSON.stringify(DEMO_USER));
+      localStorage.setItem('demo_transactions', JSON.stringify(DEMO_TRANSACTIONS));
+      localStorage.setItem('demo_investments', JSON.stringify(DEMO_INVESTMENTS));
+      localStorage.setItem('demo_budgets', JSON.stringify(DEMO_BUDGETS));
+      localStorage.setItem('demo_goals', JSON.stringify(DEMO_GOALS));
+
+      setIsDemo(true);
+      return true;
+    } catch (err) {
+      setError('Failed to start demo session. Please try again.');
+      console.error(err);
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const endDemoSession = () => {
-    // Clear demo data from localStorage
-    localStorage.removeItem('demo_mode');
-    localStorage.removeItem('demo_user');
-    localStorage.removeItem('demo_transactions');
-    localStorage.removeItem('demo_investments');
-    localStorage.removeItem('demo_budgets');
-    localStorage.removeItem('demo_goals');
-    
-    setIsDemo(false);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Clear demo data from localStorage
+      localStorage.removeItem('demo_mode');
+      localStorage.removeItem('demo_user');
+      localStorage.removeItem('demo_transactions');
+      localStorage.removeItem('demo_investments');
+      localStorage.removeItem('demo_budgets');
+      localStorage.removeItem('demo_goals');
+
+      setIsDemo(false);
+    } catch (err) {
+      setError('Failed to end demo session. Please try again.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const getDemoData = () => {
@@ -127,6 +150,8 @@ export const useDemo = () => {
 
   return {
     isDemo,
+    isLoading,
+    error,
     startDemoSession,
     endDemoSession,
     getDemoData

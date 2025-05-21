@@ -9,6 +9,7 @@ import { Pricing } from './pages/Pricing';
 import { About } from './pages/About';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import ET from './pages/ET'; // Import the Expense Tracker Page
 import { useDemo } from './hooks/useDemo';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/ET" element={<ET />} /> {/* ✅ Added Expense Tracker Route */}
           </Routes>
         </main>
         <Footer />

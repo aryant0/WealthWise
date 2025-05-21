@@ -1,40 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, PieChart } from 'lucide-react';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#2C5F2D] shadow-sm z-50">
+    <header className="fixed top-0 left-0 right-0 bg-black shadow-lg z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img src="https://freesvg.org/img/loup_2012.png" alt="WealthWise Logo" className="h-10 w-10" />
-            <span className="text-xl font-bold text-white">WealthWise</span>
-          </Link>
+          {/* Logo with navigation to home */}
+          <button 
+            onClick={() => navigate('/Home')} 
+            className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 focus:outline-none"
+          >
+            WealthWise
+          </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/features" className="text-[#97BC62] hover:text-white transition-colors">Features</Link>
-            <Link to="/pricing" className="text-[#97BC62] hover:text-white transition-colors">Pricing</Link>
-            <Link to="/about" className="text-[#97BC62] hover:text-white transition-colors">About</Link>
-            <Link to="/login" className="text-[#97BC62] hover:text-white transition-colors">Login</Link>
+          <div className="hidden md:flex items-center space-x-6">
+            <Link to="/Home" className="text-gray-300 hover:text-purple-500 transition-colors">Home</Link>
+            <Link to="/features" className="text-gray-300 hover:text-purple-500 transition-colors">Features</Link>
+            <Link to="/pricing" className="text-gray-300 hover:text-purple-500 transition-colors">Pricing</Link>
+            <Link to="/about" className="text-gray-300 hover:text-purple-500 transition-colors">About</Link>
+            <Link to="/login" className="text-gray-300 hover:text-purple-500 transition-colors">Login</Link>
+
             <Link
               to="/signup"
-              className="bg-[#97BC62] text-[#2C5F2D] px-6 py-2 rounded-full hover:bg-white transition-colors"
+              className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               Get Started
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button 
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-[#97BC62]" />
+              <X className="h-6 w-6 text-purple-500" />
             ) : (
-              <Menu className="h-6 w-6 text-[#97BC62]" />
+              <Menu className="h-6 w-6 text-purple-500" />
             )}
           </button>
         </div>
@@ -43,13 +51,23 @@ export const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden pt-4 pb-3">
             <div className="flex flex-col space-y-3">
-              <Link to="/features" className="text-[#97BC62] hover:text-white transition-colors">Features</Link>
-              <Link to="/pricing" className="text-[#97BC62] hover:text-white transition-colors">Pricing</Link>
-              <Link to="/about" className="text-[#97BC62] hover:text-white transition-colors">About</Link>
-              <Link to="/login" className="text-[#97BC62] hover:text-white transition-colors">Login</Link>
+              <button
+                onClick={() => { 
+                  setIsMenuOpen(false);
+                  navigate('/expense-tracker'); 
+                }}
+                className="text-gray-300 hover:text-purple-500 transition-colors flex items-center gap-2"
+              >
+                <PieChart className="h-4 w-4" />
+                Expense Tracker
+              </button>
+              <Link to="/features" className="text-gray-300 hover:text-purple-500 transition-colors">Features</Link>
+              <Link to="/pricing" className="text-gray-300 hover:text-purple-500 transition-colors">Pricing</Link>
+              <Link to="/about" className="text-gray-300 hover:text-purple-500 transition-colors">About</Link>
+              <Link to="/login" className="text-gray-300 hover:text-purple-500 transition-colors">Login</Link>
               <Link
                 to="/signup"
-                className="bg-[#97BC62] text-[#2C5F2D] px-6 py-2 rounded-full hover:bg-white transition-colors text-center"
+                className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 text-center"
               >
                 Get Started
               </Link>
@@ -60,4 +78,3 @@ export const Header = () => {
     </header>
   );
 };
-
